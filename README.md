@@ -1,4 +1,4 @@
-# md-img-paste.vim
+# latex-img-paste.vim
 Yet simple tool to paste images into latex files
 
 ## Use Case

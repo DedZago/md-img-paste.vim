@@ -3,12 +3,14 @@ Yet simple tool to paste images into latex files
 
 ## Use Case
 You are editing a latex file and have an image on the clipboard and want to paste it into the document. Instead of first copying it to that directory, you want to do it with a single `<leader>p` key press in Vim. So it hooks `<leader>p`, checks if you are editing a latex file, saves the image from the clipboard to the location  `Images/image1.png`, and inserts
-`\begin{figure}[H]
+```
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.35\textwidth]{Images/image1.png}
     \caption{}
     \label{fig:}
-\end{figure}`
+\end{figure}
+```
 into the file.
 
 ## Installation

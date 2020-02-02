@@ -18,7 +18,7 @@ into the file.
 
 Using VimPlug
 ```
-Plug 'DedZago/md-img-paste.vim'
+Plug 'DedZago/latex-img-paste.vim'
 ```
 
 ## Usage

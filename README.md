@@ -6,7 +6,7 @@ You are editing a latex file and have an image on the clipboard and want to past
 ```
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.35\textwidth]{Images/image1.png}
+    \includegraphics[width=0.8\textwidth]{Images/image1.png}
     \caption{}
     \label{fig:}
 \end{figure}

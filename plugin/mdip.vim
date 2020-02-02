@@ -131,7 +131,7 @@ function! mdip#MarkdownClipboardImage()
         " let relpath = SaveNewFile(g:mdip_imgdir, tmpfile)
         let extension = split(tmpfile, '\.')[-1]
         let relpath = g:mdip_imgdir . '/' . g:mdip_tmpname . '.' . extension
-	let ret = "\\begin{figure}[H]\n\\centering\n\\includegraphics[width=0.8\\textwidth]{". relpath . "}\n\\caption{}\n\\label{fig:" . g:mdip_tmpname . "}\n\\end{figure}"
+	let ret = "\\begin{figure}[H]\n\\centering\n\\includegraphics[width=0.8\\textwidth]{". relpath . "}\n\\caption{" . g:mdip_tmpname . "}\n\\label{fig:" . g:mdip_tmpname . "}\n\\end{figure}"
         execute "normal! i" . ret
     endif
 endfunction

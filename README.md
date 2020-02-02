@@ -2,13 +2,14 @@
 Yet simple tool to paste images into latex files
 
 ## Use Case
-You are editing a latex file and have an image on the clipboard and want to paste it into the document. Instead of first copying it to that directory, you want to do it with a single `<leader>p` key press in Vim. So it hooks `<leader>p`, checks if you are editing a latex file, saves the image from the clipboard to the location  `Images/image1.png`, and inserts
+An image on the clipboard gets "pasted" into the .tex document being edited: the plugin hooks `<leader>p`, checks if a latex file is being edited, saves the image from the clipboard to the location  `Images/image1.png`, and inserts
+
 ```
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{Images/image1.png}
-    \caption{}
-    \label{fig:}
+    \caption{image1}
+    \label{fig:image1}
 \end{figure}
 ```
 into the file.
@@ -30,4 +31,4 @@ autocmd FileType tex,latex nnoremap <silent> <leader>p :call mdip#MarkdownClipbo
 ```
 
 ## Acknowledgements
-Original from [ferrine](https://github.com/ferrine/md-img-paste.vim), modified for LaTeX.
+Forked repository from [ferrine](https://github.com/ferrine/md-img-paste.vim) originally for Markdown, modified for LaTeX.

@@ -28,4 +28,4 @@ autocmd FileType tex,latex nnoremap <silent> <leader>p :call mdip#MarkdownClipbo
 ```
 
 ## Acknowledgements
-Original from ![ferrine](https://github.com/ferrine/md-img-paste.vim), modified for LaTeX.
+Original from [ferrine](https://github.com/ferrine/md-img-paste.vim), modified for LaTeX.

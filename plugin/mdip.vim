@@ -174,7 +174,7 @@ function! mdip#LatexXournalNote()
     else
         " let relpath = SaveNewFile(g:mdip_imgdir, tmpfile)
         let relpath = g:mdip_imgdir . '/' . g:mdip_tmpname . '.' . 'pdf'
-        let ret = "\\input{". relpath . "}\n"
+        let ret = "\\includepdf{". relpath . "}\n"
         execute "normal! i" . ret
     endif
 endfunction

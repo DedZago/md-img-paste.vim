@@ -25,8 +25,14 @@ function! SaveFileTMPLinux(imgdir, tmpname) abort
 endfunction
 
 function! SaveXojTMPLinux(imgdir, tmpname) abort
+    let xojtemplate = "~/Templates/" . g:mdip_template_xoj_file . 'xoj'
+    if empty(glob(xojtemplate))
+        echo "xoj template does not exist"
+        return 1
+    endif
+
     let tmpfile = a:imgdir . '/' . a:tmpname . '.' . 'xoj'
-    call system(printf('touch %s', tmpfile))
+    call system(printf('cp %s %s', xojtemplate, tmpfile))
     return tmpfile
 endfunction
 
@@ -182,4 +188,7 @@ if !exists('g:mdip_tmpname')
 endif
 if !exists('g:mdip_imgname')
     let g:mdip_imgname = 'image'
+endif
+if !exists('g:mdip_template_xoj_file')
+    let g:mdip_template_xoj_file = 'note-template'
 endif

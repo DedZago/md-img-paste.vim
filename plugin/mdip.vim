@@ -173,8 +173,7 @@ function! mdip#LatexXournalNote()
         return
     else
         " let relpath = SaveNewFile(g:mdip_imgdir, tmpfile)
-        let extension = split(tmpfile, '\.')[-1]
-        let relpath = g:mdip_imgdir . '/' . g:mdip_tmpname . '.' . extension
+        let relpath = g:mdip_imgdir . '/' . g:mdip_tmpname . '.' . 'pdf'
         let ret = "\\input{". relpath . "}\n"
         execute "normal! i" . ret
     endif

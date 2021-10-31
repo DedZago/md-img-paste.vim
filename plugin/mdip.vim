@@ -25,7 +25,7 @@ function! SaveFileTMPLinux(imgdir, tmpname) abort
 endfunction
 
 function! SaveXojTMPLinux(imgdir, tmpname) abort
-    let xojtemplate = "~/Templates/" . g:mdip_template_xoj_file . 'xoj'
+    let xojtemplate = "~/Templates/" . g:mdip_template_xoj_file . '.xoj'
     if empty(glob(xojtemplate))
         echo "xoj template <" . xojtemplate . "> does not exist"
         return 1

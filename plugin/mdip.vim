@@ -24,6 +24,12 @@ function! SaveFileTMPLinux(imgdir, tmpname) abort
     return tmpfile
 endfunction
 
+function! SaveXojTMPLinux(imgdir, tmpname) abort
+    let tmpfile = a:imgdir . '/' . a:tmpname . '.' . 'xoj'
+    call system(printf('touch %s' \ tmpfile))
+    return tmpfile
+endfunction
+
 function! SaveFileTMPWin32(imgdir, tmpname) abort
     let tmpfile = a:imgdir . '/' . a:tmpname . '.png'
 
@@ -66,6 +72,12 @@ function! SaveFileTMP(imgdir, tmpname)
         return SaveFileTMPLinux(a:imgdir, a:tmpname)
     elseif s:os == "Windows"
         return SaveFileTMPWin32(a:imgdir, a:tmpname)
+    endif
+endfunction
+
+function! SaveFileTMPXoj(imgdir, tmpname)
+    if s:os == "Linux"
+        return SaveXojTMPLinux(a:imgdir, a:tmpname)
     endif
 endfunction
 
@@ -131,7 +143,33 @@ function! mdip#LatexClipboardImage()
         " let relpath = SaveNewFile(g:mdip_imgdir, tmpfile)
         let extension = split(tmpfile, '\.')[-1]
         let relpath = g:mdip_imgdir . '/' . g:mdip_tmpname . '.' . extension
-	let ret = "\\begin{figure}[H]\n\\centering\n\\includegraphics[width=0.8\\textwidth]{". relpath . "}\n\\caption{" . g:mdip_tmpname . "}\n\\label{fig:" . g:mdip_tmpname . "}\n\\end{figure}"
+        let ret = "\\begin{figure}[H]\n\\centering\n\\includegraphics[width=0.8\\textwidth]{". relpath . "}\n\\caption{" . g:mdip_tmpname . "}\n\\label{fig:" . g:mdip_tmpname . "}\n\\end{figure}"
+        execute "normal! i" . ret
+    endif
+endfunction
+
+function! mdip#LatexXournalNote()
+    " detect os: https://vi.stackexchange.com/questions/2572/detect-os-in-vimscript
+    let s:os = "Windows"
+    if !(has("win64") || has("win32") || has("win16"))
+        let s:os = substitute(system('uname'), '\n', '', '')
+    endif
+
+    let workdir = SafeMakeDir()
+    " change temp-file-name and image-name
+    let g:mdip_tmpname = InputName()
+    if empty(g:mdip_tmpname)
+      let g:mdip_tmpname = RandomName()
+    endif
+
+    let tmpfile = SaveFileTMPXoj(workdir, g:mdip_tmpname)
+    if tmpfile == 1
+        return
+    else
+        " let relpath = SaveNewFile(g:mdip_imgdir, tmpfile)
+        let extension = split(tmpfile, '\.')[-1]
+        let relpath = g:mdip_imgdir . '/' . g:mdip_tmpname . '.' . extension
+        let ret = "\\input{". relpath . "}\n"
         execute "normal! i" . ret
     endif
 endfunction

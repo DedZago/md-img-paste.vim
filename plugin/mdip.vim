@@ -176,7 +176,7 @@ function! mdip#LatexXournalNote()
         let relpath = g:mdip_imgdir . '/' . g:mdip_tmpname
         let ret = "\\includepdf{" . relpath . ".pdf}\n"
         execute "normal! i" . ret
-        execute "normal :!dbus-launch xournal " . relpath . ".xoj &"
+        silent call system("dbus-launch xournal " . relpath . ".xoj &")
     endif
 endfunction
 

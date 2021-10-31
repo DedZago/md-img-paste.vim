@@ -26,7 +26,7 @@ endfunction
 
 function! SaveXojTMPLinux(imgdir, tmpname) abort
     let tmpfile = a:imgdir . '/' . a:tmpname . '.' . 'xoj'
-    call system(printf('touch %s' \ tmpfile))
+    call system(printf('touch %s', tmpfile))
     return tmpfile
 endfunction
 

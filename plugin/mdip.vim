@@ -173,9 +173,10 @@ function! mdip#LatexXournalNote()
         return
     else
         " let relpath = SaveNewFile(g:mdip_imgdir, tmpfile)
-        let relpath = g:mdip_imgdir . '/' . g:mdip_tmpname . '.' . 'pdf'
-        let ret = "\\includepdf{". relpath . "}\n"
+        let relpath = g:mdip_imgdir . '/' . g:mdip_tmpname
+        let ret = "\\includepdf{" . relpath . ".pdf}\n"
         execute "normal! i" . ret
+        execute "normal :!dbus-launch xournal " . relpath . ".xoj &"
     endif
 endfunction
 
